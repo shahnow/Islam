@@ -1,0 +1,45 @@
+{% extends '@Islam/base.html.twig' %}
+
+{% block body %}
+    <h1>Activiteitens list</h1>
+
+    <table class="table-dark">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Adres</th>
+                <th>Telefoonnummer</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activiteiten in activiteitens %}
+            <tr>
+                <td><a href="{{ path('activiteiten_show', { 'id': activiteiten.id }) }}">{{ activiteiten.id }}</a></td>
+                <td>{{ activiteiten.naam }}</td>
+                <td>{{ activiteiten.adres }}</td>
+                <td>{{ activiteiten.telefoonnummer }}</td>
+                <td>{{ activiteiten.email }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('activiteiten_show', { 'id': activiteiten.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('activiteiten_edit', { 'id': activiteiten.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('activiteiten_new') }}">Create a new activiteiten</a>
+        </li>
+    </ul>
+{% endblock %}
